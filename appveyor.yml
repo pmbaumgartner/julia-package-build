@@ -16,7 +16,7 @@ build_script:
   - C:\julia\bin\julia -e "using Pkg; Pkg.activate(); Pkg.instantiate(); Pkg.build(); Pkg.precompile()"
 
 after_build:
-  - tar -cvzf julia-depot.tar.gz "C:\Users\appveyor\.julia"
+  - 7z a julia-depot.7z C:\Users\appveyor\.julia\
 
 artifacts:
   - path: julia-depot.tar.gz
