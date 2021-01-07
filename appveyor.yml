@@ -17,4 +17,10 @@ build_script:
   - C:\julia\bin\julia -e "using Pkg; Pkg.instantiate()"
   - C:\julia\bin\julia -e "using Pkg; Pkg.build()"
   - C:\julia\bin\julia -e "using Pkg; Pkg.precompile()"
-  - C:\julia\bin\julia -e "println(DEPOT_PATH)"
+
+after_build:
+  - 7z a julia-depot.7z C:\Users\appveyor\.julia\
+
+artifacts:
+  - path: julia-depot.7z
+    name: Julia Depot Folder
