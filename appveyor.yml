@@ -1,26 +1,23 @@
 environment:
   matrix:
-  - julia_version: 1.5.3
+    - julia_version: 1.5.3
 
 platform:
   - x64 # 64-bit
 
 branches:
   only:
-    - master
-    - /release-.*/
+    - main
 
 install:
   - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/JuliaCI/Appveyor.jl/version-1/bin/install.ps1"))
 
 build_script:
-  - C:\julia\bin\julia -e "using Pkg; Pkg.instantiate()"
-  - C:\julia\bin\julia -e "using Pkg; Pkg.build()"
-  - C:\julia\bin\julia -e "using Pkg; Pkg.precompile()"
+  - C:\julia\bin\julia -e "using Pkg; Pkg.activate(); Pkg.instantiate(); Pkg.build(); Pkg.precompile()"
 
 after_build:
-  - 7z a julia-depot.7z C:\Users\appveyor\.julia\
+  - tar -cvzf julia-depot.tar.gz C:\Users\appveyor\.julia\
 
 artifacts:
-  - path: julia-depot.7z
+  - path: julia-depot.tar.gz
     name: Julia Depot Folder
