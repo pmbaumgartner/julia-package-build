@@ -2,3 +2,4 @@
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 SASLib = "df8f2f22-cfef-5733-af3f-96770d497d85"
+StatFiles = "1463e38c-9381-5320-bcd4-4134955f093a"
