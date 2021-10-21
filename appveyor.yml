@@ -10,12 +10,12 @@ branches:
     - main
 
 install:
-  - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/JuliaCI/Appveyor.jl/version-1/bin/install.ps1"))
+  - ps: iex ((new-object net.webclient).DownloadString("https://raw.githubusercontent.com/pmbaumgartner/Appveyor.jl/version-1/bin/install.ps1"))
 
 build_script:
   - C:\julia\bin\julia -e "using Pkg; Pkg.instantiate(); Pkg.build(); Pkg.precompile()"
-  - md C:\Users\appveyor\.julia\environments\v1.5
-  - copy "*.toml" C:\Users\appveyor\.julia\environments\v1.5
+  - md C:\Users\appveyor\.julia\environments\v1.6
+  - copy "*.toml" C:\Users\appveyor\.julia\environments\v1.6
 
 after_build:
   - 7z a julia-depot.7z C:\Users\appveyor\.julia\
